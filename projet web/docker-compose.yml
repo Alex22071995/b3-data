@@ -20,6 +20,8 @@ services:
     environment:
       PMA_HOST: mysql
       UPLOAD_LIMIT: 64M
+    ports:
+      - 8080:80
   
   web:
     build:
@@ -29,6 +31,8 @@ services:
       - 5000:5000
     volumes:
       - ./src:/app
+    environment:
+      - DATABASE_URL=mysql://root@mysql:3306/rna
     depends_on:
       - mysql
 
