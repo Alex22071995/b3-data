@@ -1,5 +1,6 @@
 from flask import Flask, render_template
 from flask_sqlalchemy import SQLAlchemy
+from sqlalchemy import select
 import os
 
 
@@ -8,7 +9,7 @@ app.config['SQLALCHEMY_DATABASE_URI'] = os.environ['DATABASE_URL']
 db = SQLAlchemy(app)
 #db.init_app(app)
 
-class data(db.model):
+class Data(db.Model):
     __tablename__="data"
 
     id=db.Column(db.Integer, primary_key=True)
@@ -20,9 +21,22 @@ class data(db.model):
 def home():
     return render_template('home.html')
 
-@app.route('/liste')
-def liste():
-    return render_template('liste.html')
+@app.route('/assos')
+def assos(datas=None):
+    datas=Data.query.limit(10).all()
+    for data in datas:
+        print(f"{data.rna_id}")
+    #stmt = select(Data)
+    #result=db.session.execute(stmt)
+    #for data in result.scalars():
+    #    print(f"{data.rna_id}")
+    return render_template('assos.html', datas=datas)
+
+@app.route('/add')
+def add():
+  
+    return render_template('add.html')
+
 
 @app.route('/about')
 def about():

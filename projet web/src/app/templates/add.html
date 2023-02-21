@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block title %}
+<title>Page Ajouter</title>
+{% endblock %}
+
+{% block content %}
+<h1>Ajouter</h1>
+
+<body>
+    <form action="/add" method="post">
+    <label for="rna_id">rna_id:</label>
+    <input type="text" id="rna_id" name="rna_id" required minlength="4" maxlength="13" size="13">
+    <label for="rna_id_ex">rna_id_ex:</label>
+    <input type="text" id="rna_id_ex" name="rna_id_ex" required minlength="4" maxlength="13" size="13">
+    <label for="gestion">gestion:</label>
+    <input type="text" id="gestion" name="gestion" required minlength="4" maxlength="13" size="13">
+    <input class="save" type="button" value="Add">
+    </form>
+</body>
+
+{% endblock %}
