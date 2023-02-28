@@ -5,14 +5,13 @@ link = mysql.connector.connect(
     host="mysql",
     database='rna',
     user="root",
-    password=""
-
+    password="",
+    port=3306
 )
 
 
-
 # csv.reader(open("data/rna_import_20221101_dpt_01.csv", "r"))
-cur=link.cursor()
+cur = link.cursor()
 with open('data/rna_import_20221101_dpt_01.csv', 'r', encoding='ISO-8859-1') as f:
     reader = csv.reader(f, delimiter=';')
     next(reader)

@@ -32,6 +32,7 @@ services:
     volumes:
       - ./src:/app
     environment:
+      - FLASK_DEBUG=development
       - DATABASE_URL=mysql://root@mysql:3306/rna
     depends_on:
       - mysql
