@@ -1,0 +1,11 @@
+{% entends "base.html" %}
+
+{% block title %}<title>Graphique</title> {% end block %}
+
+{% block content %}
+    <script type="text/javascript">
+
+        google.charts.load('current', {'packages': ['corechart']});
+        google.charts.setOnLoadCallback(drawChart);
+        
+    </script>

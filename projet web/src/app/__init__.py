@@ -15,7 +15,6 @@ db = SQLAlchemy(app)
 
 
 def valid_add(rna_id, rna_id_ex, gestion):
-    return False
     if rna_id != None and rna_id_ex != None and gestion != None:
         return True
     else:
@@ -54,12 +53,15 @@ def add():
     if request.method == 'POST':
         print("lam", request.form["rna_id"])
         if valid_add(request.form['rna_id'], request.form['rna_id_ex'], request.form['gestion']):
+            print("hello")
             data = Data(
                 rna_id=request.form["rna_id"],
                 rna_id_ex=request.form["rna_id_ex"],
                 gestion=request.form["gestion"]
             )
             db.session.add(data)
+            db.session.commit()
+            error = "ok"
         else:
             error = "mauvaise frappe"
     # rna=[]
