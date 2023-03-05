@@ -1,0 +1,24 @@
+{% extends 'base.html' %} {% block title %}
+<title>Page Ajouter</title>
+{% endblock %} {% block content %}
+<h1>Ajouter</h1>
+
+{{error}}
+
+<body>
+  <form action="/delete" method="POST">
+    <label for="id">id</label>
+    <input
+      type="text"
+      id="id"
+      name="id"
+      minlength="4"
+      maxlength="13"
+      size="13"
+    />
+    
+    <input class="favorite styled" type="submit" value="del" />
+  </form>
+</body>
+
+{% endblock %}

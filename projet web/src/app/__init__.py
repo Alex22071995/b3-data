@@ -21,6 +21,13 @@ def valid_add(rna_id, rna_id_ex, gestion):
         return False
 
 
+def valid_del(id):
+    if id != None:
+        return True
+    else:
+        return False
+
+
 class Data(db.Model):
     __tablename__ = "data"
 
@@ -33,18 +40,6 @@ class Data(db.Model):
 @app.route('/')
 def home():
     return render_template('home.html')
-
-
-@app.route('/assos')
-def assos(datas=None):
-    datas = Data.query.limit(10).all()
-    for data in datas:
-        print(f"{data.rna_id}")
-    #stmt = select(Data)
-    # result=db.session.execute(stmt)
-    # for data in result.scalars():
-    #    print(f"{data.rna_id}")
-    return render_template('assos.html', datas=datas)
 
 
 @app.route('/add', methods=['POST', 'GET'])
@@ -75,6 +70,35 @@ def add():
     #    print("test")
 
     return render_template('add.html', error=error)
+
+
+@app.route('/assos/<id>/delete')
+def delete(id):
+    error = None
+
+    print("hello", id)
+    Data.query.filter(Data.id == id).delete()
+    print('passer')
+    error = "ok"
+
+    return "test"
+
+
+@app.route('/assos')
+def assos(datas=None):
+    datas = Data.query.limit(10).all()
+    for data in datas:
+        print(f"{data.rna_id}")
+    #stmt = select(Data)
+    # result=db.session.execute(stmt)
+    # for data in result.scalars():
+    #    print(f"{data.rna_id}")
+    return render_template('assos.html', datas=datas)
+
+
+@app.route('/graph')
+def graph():
+    return render_template('graph.html')
 
 
 @app.route('/about')

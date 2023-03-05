@@ -1,34 +1,28 @@
-
-
-
-{% extends 'base.html' %}
-
-{% block title %}
+{% extends 'base.html' %} {% block title %}
 <title>Assos page</title>
-{% endblock %}
-
-{% block content %}
+{% endblock %} {% block content %}
 <h1>Liste Donnée !</h1>
 
-
 <table class="table">
-    <thead>
-        <tr>
-            <th>ID</th>
-            <th>RNA ID</th>
-            <th>RNA ID EX</th>
-            <th>Gestion</th>
-        </tr>
-    </thead>
-    <tbody>
-        {% for data in datas %}
-        <tr>
-            <td>{{ data.id }}</td>
-            <td>{{ data.rna_id }}</td>
-            <td>{{ data.rna_id_ex }}</td>
-            <td>{{ data.gestion }}</td>
-        </tr>
-        {% endfor %}
-    </tbody>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>RNA ID</th>
+      <th>RNA ID EX</th>
+      <th>Gestion</th>
+      <th>Supprimer</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for data in datas %}
+    <tr>
+      <td>{{ data.id }}</td>
+      <td>{{ data.rna_id }}</td>
+      <td>{{ data.rna_id_ex }}</td>
+      <td>{{ data.gestion }}</td>
+      <td><a href="/assos/{{ data.id }}/delete">delete</a></td>
+    </tr>
+    {% endfor %}
+  </tbody>
 </table>
 {% endblock %}
