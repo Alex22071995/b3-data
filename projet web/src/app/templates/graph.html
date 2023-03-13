@@ -1,11 +1,104 @@
-{% entends "base.html" %}
+{% extends "base.html" %}
 
-{% block title %}<title>Graphique</title> {% end block %}
+{% block title %}<title>Graphique</title> {% endblock %}
 
 {% block content %}
-   <!--<script type="text/javascript">
 
-        google.charts.load('current', {'packages': ['corechart']});
-        google.charts.setOnLoadCallback(drawChart);
+        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+        <script type="text/javascript">
+            google.charts.load('current', {'packages':['bar']});
+            google.charts.setOnLoadCallback(drawChart);
+    
+            function drawChart() {
+                var data = google.visualization.arrayToDataTable([
+                    ['Année', 'Ventes', 'Profits'],
+                    ['2016', 1000, 400],
+                    ['2017', 1170, 460],
+                    ['2018', 660, 1120],
+                    ['2019', 1030, 540]
+                ]);
+    
+                var options = {
+                    chart: {
+                        title: 'Ventes et Profits',
+                        subtitle: '2016-2019',
+                    }
+                };
+    
+                var chart = new google.charts.Bar(document.getElementById('chart_div'));
+    
+                chart.draw(data, google.charts.Bar.convertOptions(options));
+            }
+        </script>
+    </head>
+    <body>
+        <div id="chart_div"></div>
+    </body>
 
-    </script>--/>
+
+        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+        <script type="text/javascript">
+            google.charts.load('current', {'packages':['bar']});
+            google.charts.setOnLoadCallback(drawChart);
+    
+            function drawChart() {
+                var data = google.visualization.arrayToDataTable([
+                    ['Année', 'Ventes', 'Profits'],
+                    ['2018', 1000, 400],
+                    ['2019', 1170, 460],
+                    ['2020', 660, 1120],
+                    ['2021', 1030, 540]
+                ]);
+    
+                var options = {
+                    chart: {
+                        title: 'Ventes et Profits',
+                        subtitle: '2018-2021',
+                    }
+                };
+    
+                var chart = new google.charts.Bar(document.getElementById('chart_div'));
+    
+                chart.draw(data, google.charts.Bar.convertOptions(options));
+            }
+        </script>
+    </head>
+    <body>
+        <div id="chart_div"></div>
+    </body>
+
+
+        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+        <script type="text/javascript">
+            google.charts.load('current', {'packages':['corechart']});
+            google.charts.setOnLoadCallback(drawChart);
+    
+            function drawChart() {
+                var data = new google.visualization.DataTable();
+                data.addColumn('string', 'Topping');
+                data.addColumn('number', 'Slices');
+                data.addRows( [
+                    ['gateau', 6]
+                    ['fruit', 29]
+                    ['legume', 5]
+                    ['glace', 12]
+                    ['bonbon', 124]
+                ])
+    
+                var options = {
+                    chart: {
+                        title: 'Ventes et Profits boulangerie',
+                        
+                    }
+                };
+    
+                var chart = new google.charts.Bar(document.getElementById('chart_div'));
+    
+                chart.draw(data, google.charts.Bar.convertOptions(options));
+            }
+        </script>
+    </head>
+    <body>
+        <div id="chart_div"></div>
+    </body>
+{% endblock %}

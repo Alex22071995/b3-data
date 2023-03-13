@@ -11,6 +11,7 @@
       <th>RNA ID EX</th>
       <th>Gestion</th>
       <th>Supprimer</th>
+      <th>Modifier</th>
     </tr>
   </thead>
   <tbody>
@@ -21,6 +22,7 @@
       <td>{{ data.rna_id_ex }}</td>
       <td>{{ data.gestion }}</td>
       <td><a href="/assos/{{ data.id }}/delete">delete</a></td>
+      <td><a href="/assos/{{ data.id }}/modify">Modifier</a> </td>
     </tr>
     {% endfor %}
   </tbody>

@@ -72,14 +72,48 @@ def add():
     return render_template('add.html', error=error)
 
 
+@app.route('/modify')
+def modif(id):
+    print(id)
+    return redirect(url_for('index'))
+
+@app.route('/assos/<id>/modify', methods=['POST'])
+def modify(id):
+    
+    print(id)
+    Data = Data.query.get_or_404(Data.id)
+    if request.method=="POST":
+        Data.rna_id=request.form["rna_id"]
+        Data.rna_id_ex=request.form["rna_id_ex"]
+        Data.gestion=request.form["gestion"]
+        db.session.commit()
+    #data = request.get_json()
+    #Data.rna_id=data.get("rna_id",Data.rna_id)
+    #Data.rna_id_ex=data.get("rna_id_ex",Data.rna_id_ex)
+    #Data.gestion=data.get("gestion",Data.gestion)
+    #Data.rna_id = request.form['rna_id']
+    #Data.rna_id_ex = request.form['rna_id_ex']
+    #Data.gestion = request.form['gestion']
+    
+    return render_template('assos.html', id=id)
+    
+
+
 @app.route('/assos/<id>/delete')
 def delete(id):
     error = None
 
     print("hello", id)
-    Data.query.filter(Data.id == id).delete()
+    #delete=Data.query.filter(Data.id == id).delete()
+    #query = Data.query.with_entities(Data.id).group_by(Data.id)
+    #del_query = Data.__table__.delete().where(Data.id.not_in(query))
     print('passer')
     error = "ok"
+    data = Data.query.get_or_404(id)
+    db.session.delete(data)
+    db.session.commit()
+    # db.session.execute(del_query)
+    db.session.commit()
 
     return "test"
 

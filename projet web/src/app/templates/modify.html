@@ -1,0 +1,44 @@
+{% extends 'base.html' %} {% block title %}
+<title>Page modify</title>
+{% endblock %} {% block content %}
+<h1>modify</h1>
+
+{{error}}
+
+<body>
+  <form method="POST" action="/assos/<id>/modify">
+    <label for="rna_id">rna_id</label>
+    <input
+      type="text"
+      id="rna_id"
+      name="rna_id"
+      minlength="4"
+      maxlength="13"
+      size="13"
+    />
+    <label for="rna_id_ex">rna_id_ex:</label>
+    <input
+      type="text"
+      id="rna_id_ex"
+      name="rna_id_ex"
+      minlength="4"
+      maxlength="13"
+      size="13"
+    />
+    <label for="gestion">gestion:</label>
+    <input
+      type="text"
+      id="gestion"
+      name="gestion"
+      minlength="4"
+      maxlength="13"
+      size="13"
+    />
+
+    
+    <button type="submit">Modifier</button>
+  
+</form>
+</body>
+
+{% endblock %}
