@@ -3,39 +3,6 @@
 {% block title %}<title>Graphique</title> {% endblock %}
 
 {% block content %}
-
-        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-        <script type="text/javascript">
-            google.charts.load('current', {'packages':['bar']});
-            google.charts.setOnLoadCallback(drawChart);
-    
-            function drawChart() {
-                var data = google.visualization.arrayToDataTable([
-                    ['Année', 'Ventes', 'Profits'],
-                    ['2016', 1000, 400],
-                    ['2017', 1170, 460],
-                    ['2018', 660, 1120],
-                    ['2019', 1030, 540]
-                ]);
-    
-                var options = {
-                    chart: {
-                        title: 'Ventes et Profits',
-                        subtitle: '2016-2019',
-                    }
-                };
-    
-                var chart = new google.charts.Bar(document.getElementById('chart_div'));
-    
-                chart.draw(data, google.charts.Bar.convertOptions(options));
-            }
-        </script>
-    </head>
-    <body>
-        <div id="chart_div"></div>
-    </body>
-
-
         <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
         <script type="text/javascript">
             google.charts.load('current', {'packages':['bar']});
